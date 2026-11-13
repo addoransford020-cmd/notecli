@@ -1,69 +1,53 @@
-name: Build & Release notecli
+name: Release Statically Linked Rust Binary
 
 on:
   push:
-    branches: [ "main" ]
-  release:
-    types: [ created ]
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
 
 jobs:
   build:
-    name: Build ${{ matrix.target }}
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         target:
-          - aarch64-unknown-linux-musl
           - x86_64-unknown-linux-musl
+          - aarch64-unknown-linux-musl
           - armv7-unknown-linux-musleabihf
+
+    env:
+      BINARY_NAME: notecli
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Rust toolchain
+      - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: ${{ matrix.target }}
 
-      - name: Install cross
-        run: cargo install cross --git https://github.com/cross-rs/cross
+      - name: Install Cross
+        run: cargo install cross
 
-      - name: Build binary
-        run: cross build --release --target ${{ matrix.target }}
+      - name: Install Target for Cross Compilation
+        run: rustup target add ${{ matrix.target }}
 
-      - name: Rename binary
+      - name: Build with Cross
+        run: cross build --target ${{ matrix.target }} --release --verbose
+
+      - name: Create Release Archive
         run: |
-          mkdir -p artifacts
-          cp target/${{ matrix.target }}/release/notecli \
-             artifacts/notecli-${{ matrix.target }}
+          mkdir -p release
+          cp target/${{ matrix.target }}/release/$BINARY_NAME release/
+          tar -czvf ${{ matrix.target }}.tar.gz -C release $BINARY_NAME
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: notecli-${{ matrix.target }}
-          path: artifacts/notecli-${{ matrix.target }}
-
-  release:
-    name: Attach to Release
-    needs: build
-    if: github.event_name == 'release'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: Upload to GitHub Release
+      - name: Upload Release Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: artifacts/**/*
+          files: |
+            *.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
