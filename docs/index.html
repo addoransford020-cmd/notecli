@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>notecli — Notes at the speed of thought</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+    }
+    nav {
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; color: #f0f6fc; }
+    .logo span { color: #58a6ff; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a { color: #8b949e; text-decoration: none; }
+    nav a:hover { color: #f0f6fc; }
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+    h1 { font-size: 3rem; color: #f0f6fc; margin-bottom: 1rem; }
+    h1 span { color: #58a6ff; }
+    .hero p { font-size: 1.15rem; color: #8b949e; margin-bottom: 2rem; }
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+    .btn-primary { background: #58a6ff; color: #0d1117; }
+    .btn-secondary { border: 1px solid #30363d; color: #f0f6fc; }
+    .terminal {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #010409;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .terminal-bar {
+      background: #161b22;
+      padding: .6rem 1rem;
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.r { background: #ff5f56; }
+    .dot.y { background: #ffbd2e; }
+    .dot.g { background: #27c93f; }
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: monospace;
+      font-size: .9rem;
+      line-height: 2;
+    }
+    .cmd { color: #3fb950; }
+    .out { color: #8b949e; }
+    .hi { color: #ffa657; }
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    h2 { font-size: 2rem; color: #f0f6fc; margin-bottom: 1rem; }
+    .sub { color: #8b949e; margin-bottom: 2rem; }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+    .feature {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .feature h3 { color: #f0f6fc; margin-bottom: .5rem; }
+    .feature p { color: #8b949e; font-size: .9rem; }
+    .icon { font-size: 1.8rem; margin-bottom: .8rem; }
+    .install { background: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; }
+    .code {
+      background: #010409;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      font-family: monospace;
+      font-size: .9rem;
+      color: #3fb950;
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .plan {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .plan.featured { border-color: #58a6ff; }
+    .plan-price { font-size: 2.5rem; font-weight: 700; color: #f0f6fc; margin: .5rem 0; }
+    .plan ul { list-style: none; margin: 1rem 0; text-align: left; }
+    .plan li { padding: .3rem 0; color: #8b949e; }
+    .plan li::before { content: "✓ "; color: #3fb950; }
+    footer {
+      border-top: 1px solid #30363d;
+      text-align: center;
+      padding: 2rem;
+      color: #8b949e;
+    }
+    footer a { color: #58a6ff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">note<span>cli</span></div>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://github.com/addoransford020-cmd/notecli" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>Notes at the <span>speed of thought</span></h1>
+  <p>A blazing-fast command-line note manager built in Rust.<br/>No account. No internet. Just type and go.</p>
+  <a href="#install" class="btn btn-primary">⬇ Download Now</a>
+  <a href="https://github.com/addoransford020-cmd/notecli" class="btn btn-secondary" target="_blank">View on GitHub</a>
+</div>
+
+<div class="terminal">
+  <div class="terminal-bar">
+    <div class="dot r"></div>
+    <div class="dot y"></div>
+    <div class="dot g"></div>
+  </div>
+  <div class="terminal-body">
+    <div><span class="cmd">$</span> notecli add --title "Exam dates" --body "Networking: Jan 20" --tags exam</div>
+    <div class="out">✓ Note <span class="hi">#0</span> added: "Exam dates"</div>
+    <br/>
+    <div><span class="cmd">$</span> notecli list</div>
+    <div class="out">── 1 note(s) ──</div>
+    <div class="out"><span class="hi">#0</span> Exam dates 2026-11-13 [exam]</div>
+    <div class="out">&nbsp;&nbsp;&nbsp;Networking: Jan 20</div>
+    <br/>
+    <div><span class="cmd">$</span> notecli search exam</div>
+    <div class="out">── 1 result(s) for "exam" ──</div>
+    <div class="out"><span class="hi">#0</span> Exam dates 2026-11-13 [exam]</div>
+  </div>
+</div>
+
+<section id="features">
+  <h2>Everything you need. Nothing you don't.</h2>
+  <p class="sub">Built for students and developers who live in the terminal.</p>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">⚡</div>
+      <h3>Instant capture</h3>
+      <p>Add a note in one command. No loading screens, no account required.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🔍</div>
+      <h3>Full-text search</h3>
+      <p>Search across titles, bodies and tags instantly.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🏷️</div>
+      <h3>Tag system</h3>
+      <p>Organise notes by course, project or priority with tags.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📂</div>
+      <h3>Plain JSON storage</h3>
+      <p>Notes live in ~/.notecli/notes.json — easy to back up.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🦀</div>
+      <h3>Built in Rust</h3>
+      <p>Single static binary. No runtime needed. Runs on any Linux.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🌐</div>
+      <h3>Offline first</h3>
+      <p>Your notes never touch a server. Works anywhere.</p>
+    </div>
+  </div>
+</section>
+
+<div class="install" id="install">
+  <section>
+    <h2>Install in seconds</h2>
+    <p class="sub">Pre-built static binaries — download, make executable, run.</p>
+    <p style="color:#58a6ff">ARM64 Linux (aarch64) — Required</p>
+    <div class="code">
+wget https://github.com/addoransford020-cmd/notecli/releases/latest/download/notecli-aarch64-unknown-linux-musl
+chmod +x notecli-aarch64-unknown-linux-musl
+sudo mv notecli-aarch64-unknown-linux-musl /usr/local/bin/notecli
+notecli --version
+    </div>
+    <p style="color:#58a6ff; margin-top:1.5rem">x86_64 Linux — Bonus</p>
+    <div class="code">
+wget https://github.com/addoransford020-cmd/notecli/releases/latest/download/notecli-x86_64-unknown-linux-musl
+chmod +x notecli-x86_64-unknown-linux-musl
+sudo mv notecli-x86_64-unknown-linux-musl /usr/local/bin/notecli
+notecli --version
+    </div>
+    <p style="color:#58a6ff; margin-top:1.5rem">Quick Start</p>
+    <div class="code">
+notecli add --title "My note" --body "Hello world" --tags demo
+notecli list
+notecli search demo
+notecli view 0
+notecli delete 0
+    </div>
+  </section>
+</div>
+
+<section id="pricing">
+  <h2>Simple, honest pricing</h2>
+  <p class="sub">Free and open source forever. No subscriptions. No dark patterns.</p>
+  <div class="pricing">
+    <div class="plan featured">
+      <div>Community</div>
+      <div class="plan-price">€0</div>
+      <ul>
+        <li>Full CLI — add, list, search, edit, delete</li>
+        <li>Unlimited notes</li>
+        <li>Tag organisation</li>
+        <li>Local JSON storage</li>
+        <li>ARM64, x86_64, ARMv7 binaries</li>
+        <li>MIT License</li>
+      </ul>
+      <a href="#install" class="btn btn-primary">Download Free</a>
+    </div>
+    <div class="plan">
+      <div>Pro (Coming Soon)</div>
+      <div class="plan-price">€4<span style="font-size:1rem;color:#8b949e">/mo</span></div>
+      <ul>
+        <li>Everything in Community</li>
+        <li>Encrypted sync across devices</li>
+        <li>Web vault</li>
+        <li>Export to Markdown and PDF</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://github.com/addoransford020-cmd/notecli" class="btn btn-secondary" target="_blank">Watch on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with 🦀 Rust by <a href="https://github.com/addoransford020-cmd">Ransford Addo</a> · Health Informatics student at THD Campus Passau</p>
+  <p style="margin-top:.5rem">
+    <a href="https://github.com/addoransford020-cmd/notecli/blob/main/LICENSE">MIT License</a> ·
+    <a href="https://github.com/addoransford020-cmd/notecli">GitHub</a>
+  </p>
+</footer>
+
+</body>
+</html>
