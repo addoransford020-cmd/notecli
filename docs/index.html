@@ -104,6 +104,7 @@
       color: #3fb950;
       overflow-x: auto;
       margin-top: 1rem;
+      white-space: pre;
     }
     .pricing {
       display: grid;
@@ -123,6 +124,17 @@
     .plan ul { list-style: none; margin: 1rem 0; text-align: left; }
     .plan li { padding: .3rem 0; color: #8b949e; }
     .plan li::before { content: "✓ "; color: #3fb950; }
+    .verify {
+      background: #0d1117;
+      border: 1px solid #3fb950;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      font-family: monospace;
+      font-size: .9rem;
+      color: #3fb950;
+      margin-top: 1rem;
+      white-space: pre;
+    }
     footer {
       border-top: 1px solid #30363d;
       text-align: center;
@@ -130,6 +142,12 @@
       color: #8b949e;
     }
     footer a { color: #58a6ff; text-decoration: none; }
+    .label {
+      color: #58a6ff;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -146,9 +164,11 @@
 
 <div class="hero">
   <h1>Notes at the <span>speed of thought</span></h1>
-  <p>A blazing-fast command-line note manager built in Rust.<br/>No account. No internet. Just type and go.</p>
-  <a href="#install" class="btn btn-primary">⬇ Download Now</a>
-  <a href="https://github.com/addoransford020-cmd/notecli" class="btn btn-secondary" target="_blank">View on GitHub</a>
+  <p>A blazing-fast command-line note manager built in Rust.<br/>
+  No account. No internet. Just type and go.</p>
+  <a href="#install" class="btn btn-primary">Download Now</a>
+  <a href="https://github.com/addoransford020-cmd/notecli" 
+     class="btn btn-secondary" target="_blank">View on GitHub</a>
 </div>
 
 <div class="terminal">
@@ -163,12 +183,12 @@
     <br/>
     <div><span class="cmd">$</span> notecli list</div>
     <div class="out">── 1 note(s) ──</div>
-    <div class="out"><span class="hi">#0</span> Exam dates 2026-11-13 [exam]</div>
+    <div class="out"><span class="hi">#0</span> Exam dates 2026-11-21 [exam]</div>
     <div class="out">&nbsp;&nbsp;&nbsp;Networking: Jan 20</div>
     <br/>
     <div><span class="cmd">$</span> notecli search exam</div>
     <div class="out">── 1 result(s) for "exam" ──</div>
-    <div class="out"><span class="hi">#0</span> Exam dates 2026-11-13 [exam]</div>
+    <div class="out"><span class="hi">#0</span> Exam dates 2026-11-21 [exam]</div>
   </div>
 </div>
 
@@ -178,33 +198,39 @@
   <div class="features">
     <div class="feature">
       <div class="icon">⚡</div>
-      <h3>Instant capture</h3>
-      <p>Add a note in one command. No loading screens, no account required.</p>
+      <h3>Zero friction setup</h3>
+      <p>Download one file and run it. No Python, no Ruby, no admin 
+      rights needed. Works on any Linux system instantly.</p>
     </div>
     <div class="feature">
       <div class="icon">🔍</div>
       <h3>Full-text search</h3>
-      <p>Search across titles, bodies and tags instantly.</p>
+      <p>Search across titles, bodies and tags instantly. 
+      Find any note in milliseconds.</p>
     </div>
     <div class="feature">
       <div class="icon">🏷️</div>
       <h3>Tag system</h3>
-      <p>Organise notes by course, project or priority with tags.</p>
+      <p>Organise notes by course, project or priority. 
+      Filter exactly what you need.</p>
     </div>
     <div class="feature">
       <div class="icon">📂</div>
-      <h3>Plain JSON storage</h3>
-      <p>Notes live in ~/.notecli/notes.json — easy to back up.</p>
+      <h3>Your data forever</h3>
+      <p>Notes saved in plain JSON on your computer. 
+      Never locked in. Open in any text editor anytime.</p>
     </div>
     <div class="feature">
       <div class="icon">🦀</div>
       <h3>Built in Rust</h3>
-      <p>Single static binary. No runtime needed. Runs on any Linux.</p>
+      <p>Starts in milliseconds. Single static binary. 
+      No runtime. No garbage collector pauses.</p>
     </div>
     <div class="feature">
       <div class="icon">🌐</div>
-      <h3>Offline first</h3>
-      <p>Your notes never touch a server. Works anywhere.</p>
+      <h3>Works offline</h3>
+      <p>Notes live on your computer. Use it on a plane, 
+      in a basement, anywhere with no wifi.</p>
     </div>
   </div>
 </section>
@@ -212,29 +238,38 @@
 <div class="install" id="install">
   <section>
     <h2>Install in seconds</h2>
-    <p class="sub">Pre-built static binaries — download, make executable, run.</p>
-    <p style="color:#58a6ff">ARM64 Linux (aarch64) — Required</p>
-    <div class="code">
-wget https://github.com/addoransford020-cmd/notecli/releases/latest/download/notecli-aarch64-unknown-linux-musl
-chmod +x notecli-aarch64-unknown-linux-musl
-sudo mv notecli-aarch64-unknown-linux-musl /usr/local/bin/notecli
-notecli --version
-    </div>
-    <p style="color:#58a6ff; margin-top:1.5rem">x86_64 Linux — Bonus</p>
-    <div class="code">
-wget https://github.com/addoransford020-cmd/notecli/releases/latest/download/notecli-x86_64-unknown-linux-musl
-chmod +x notecli-x86_64-unknown-linux-musl
-sudo mv notecli-x86_64-unknown-linux-musl /usr/local/bin/notecli
-notecli --version
-    </div>
-    <p style="color:#58a6ff; margin-top:1.5rem">Quick Start</p>
-    <div class="code">
-notecli add --title "My note" --body "Hello world" --tags demo
+    <p class="sub">Pre-built static binaries — download, extract and run.</p>
+
+    <span class="label">ARM64 Linux — aarch64 (Required)</span>
+    <div class="code">wget https://github.com/addoransford020-cmd/notecli/releases/download/v0.3.0/aarch64-unknown-linux-musl.tar.gz
+tar -xzvf aarch64-unknown-linux-musl.tar.gz
+sudo mv notecli /usr/local/bin/notecli
+notecli --version</div>
+
+    <span class="label">Verify static linking</span>
+    <div class="verify">file /usr/local/bin/notecli
+# Output confirms:
+# notecli: ELF 64-bit LSB executable, ARM aarch64, statically linked</div>
+
+    <span class="label">x86_64 Linux (Bonus)</span>
+    <div class="code">wget https://github.com/addoransford020-cmd/notecli/releases/download/v0.3.0/x86_64-unknown-linux-musl.tar.gz
+tar -xzvf x86_64-unknown-linux-musl.tar.gz
+sudo mv notecli /usr/local/bin/notecli
+notecli --version</div>
+
+    <span class="label">ARMv7 Linux (Bonus)</span>
+    <div class="code">wget https://github.com/addoransford020-cmd/notecli/releases/download/v0.3.0/armv7-unknown-linux-musleabihf.tar.gz
+tar -xzvf armv7-unknown-linux-musleabihf.tar.gz
+sudo mv notecli /usr/local/bin/notecli
+notecli --version</div>
+
+    <span class="label">Quick Start</span>
+    <div class="code">notecli add --title "My note" --body "Hello world" --tags demo
 notecli list
 notecli search demo
 notecli view 0
-notecli delete 0
-    </div>
+notecli edit 0 --title "Updated title"
+notecli delete 0</div>
   </section>
 </div>
 
@@ -246,34 +281,40 @@ notecli delete 0
       <div>Community</div>
       <div class="plan-price">€0</div>
       <ul>
-        <li>Full CLI — add, list, search, edit, delete</li>
+        <li>All 6 commands included</li>
         <li>Unlimited notes</li>
         <li>Tag organisation</li>
-        <li>Local JSON storage</li>
-        <li>ARM64, x86_64, ARMv7 binaries</li>
-        <li>MIT License</li>
+        <li>Works completely offline</li>
+        <li>ARM64, x86_64 and ARMv7 binaries</li>
+        <li>MIT License — free forever</li>
       </ul>
       <a href="#install" class="btn btn-primary">Download Free</a>
     </div>
     <div class="plan">
-      <div>Pro (Coming Soon)</div>
-      <div class="plan-price">€4<span style="font-size:1rem;color:#8b949e">/mo</span></div>
+      <div>Pro — Coming Soon</div>
+      <div class="plan-price">€4<span style="font-size:1rem;
+      color:#8b949e">/mo</span></div>
       <ul>
         <li>Everything in Community</li>
         <li>Encrypted sync across devices</li>
-        <li>Web vault</li>
-        <li>Export to Markdown and PDF</li>
+        <li>No account needed — key based</li>
+        <li>Pay once — receive a sync key</li>
+        <li>Your notes stay encrypted</li>
         <li>Priority support</li>
       </ul>
-      <a href="https://github.com/addoransford020-cmd/notecli" class="btn btn-secondary" target="_blank">Watch on GitHub</a>
+      <a href="https://github.com/addoransford020-cmd/notecli" 
+         class="btn btn-secondary" target="_blank">Watch on GitHub</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Built with 🦀 Rust by <a href="https://github.com/addoransford020-cmd">Ransford Addo</a> · Health Informatics student at THD Campus Passau</p>
+  <p>Built with 🦀 Rust by 
+  <a href="https://github.com/addoransford020-cmd">Ransford Addo</a> 
+  · Health Informatics student at THD Campus Passau</p>
   <p style="margin-top:.5rem">
-    <a href="https://github.com/addoransford020-cmd/notecli/blob/main/LICENSE">MIT License</a> ·
+    <a href="https://github.com/addoransford020-cmd/notecli/blob/main/LICENSE">
+    MIT License</a> ·
     <a href="https://github.com/addoransford020-cmd/notecli">GitHub</a>
   </p>
 </footer>
