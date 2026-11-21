@@ -70,8 +70,20 @@ milliseconds.
 ## Installation
 Download the binary from the Releases page:
 ```bash
-wget https://github.com/addoransford020-cmd/notecli/releases/latest/download/notecli-aarch64-unknown-linux-musl
-chmod +x notecli-aarch64-unknown-linux-musl
+# Download
+wget https://github.com/addoransford020-cmd/notecli/releases/download/v0.3.0/aarch64-unknown-linux-musl.tar.gz
+
+# Extract
+tar -xzvf aarch64-unknown-linux-musl.tar.gz
+
+# Move to PATH
+sudo mv notecli /usr/local/bin/notecli
+
+# Verify it is statically linked
+file /usr/local/bin/notecli
+
+# Run it
+notecli --version
 sudo mv notecli-aarch64-unknown-linux-musl /usr/local/bin/notecli
 ```
 
