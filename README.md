@@ -240,21 +240,34 @@ All commands, unlimited notes, all platforms.
 No credit card. No account. No time limit.
 Goal: build a large base of happy users who trust the tool.
 
-Pro tier — 4 euros per month:
-Adds encrypted sync across devices using a private key.
-No account needed — pay once and receive a sync key.
-Run notecli sync --key YOUR_KEY on each device.
-Notes are encrypted on your device before uploading.
-We never see your notes — only the encrypted file.
-Goal: convert power users working on multiple devices.
+## Pricing Strategy
 
-Why 4 euros:
-- Affordable for students
-- Covers sync server running costs
-- Cheaper than Notion Pro at 8 euros per month
-- No annual commitment — cancel any time
+notecli is completely free and open source forever.
+
+No credit card. No account. No subscription. No tricks.
+
+Every feature is available to everyone:
+- All 6 commands
+- Unlimited notes
+- Tag organisation
+- Full text search
+- All platforms — ARM64, x86_64, ARMv7
+- MIT License — use it anywhere
+
+Why free?
+notecli was built to solve a real student problem.
+Students should not pay to take notes in their terminal.
+The tool is open source — anyone can contribute,
+improve or build on top of it freely.
+
+Future plans:
+If sync across devices is added in future it will
+be self hosted — meaning you run your own server
+and your notes stay yours completely. No subscription
+ever required.
 
 ---
 
 ## License
 MIT — free to use for anything
+
