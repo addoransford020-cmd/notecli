@@ -1,127 +1,181 @@
-# 📝 notecli — Notes That Work Like Code
+# notecli — Instant Structured Notes for the Terminal
 
-> "If your workflow lives in the terminal, your notes should too."
+## The Problem
 
-## The Unique Idea Behind notecli
+You are deep in your terminal working on code or studying.
+A thought hits you. You need to write it down immediately.
 
-Most note apps are built for people who think in documents.
-notecli is built for people who think in code.
+Every existing solution breaks your flow:
 
-Just like source code, your notes in notecli are:
-- Tagged — like labels on a git issue
-- Searchable — like grep on your codebase
-- Structured — stored in plain JSON you can script
-- Version-controllable — back up with git like any project
-- Composable — pipe output into other terminal tools
+Cloud apps like Notion and Evernote need a browser,
+an account and internet — switching breaks your focus.
 
-This is the twist: notecli does not just store notes.
-It makes your notes part of your development workflow.
+Desktop apps like Obsidian and Onyx are powerful but
+heavy — they need installation and a graphical interface.
 
-A developer taking notes should feel the same as a developer
-writing code — fast, structured and in full control.
+Other CLI tools like jrnl need Python. nb needs bash,
+git and curl configured. Joplin CLI needs Node.js.
+tnote and tdo need Python or Go installed first.
 
-## Which Category Does This Belong To?
+A plain text file has no structure — finding notes
+later means reading through everything manually.
 
-notecli belongs to the Text Editing category.
+notecli solves all of this with one command:
 
-notecli provides a completely new way to create and edit text.
-Instead of opening a graphical editor, you type one command.
-Instead of storing notes in a proprietary format, you get
-plain JSON you can open, edit and move anywhere.
-Instead of clicking through menus, you search and filter
-notes the same way you search and filter code.
+notecli add --title "Idea" --body "Cache the response" --tags backend,urgent
 
-It is text editing reimagined for the terminal workflow.
+Structured. Tagged. Searchable. Done in 2 seconds.
 
-Example — instead of this:
-1. Open Notion in browser and wait 5 seconds
-2. Click New Page
-3. Type your note
-4. Go back to terminal
+---
 
-You do this:
-notecli add --title "Bug found" --body "Line 42 null pointer" --tags bug,urgent
+## The Unique Position of notecli
 
-Done in 2 seconds. Never left the terminal.
+After comparing every major note taking tool available,
+notecli occupies a position no other tool fills:
 
-## How notecli Compares to Other CLI Note Apps
+THE ONLY CLI NOTE TOOL THAT IS:
+- Structured — every note has title, body and tags
+- Zero dependencies — no Python, Ruby, Node or Go needed
+- Single static binary — download and run immediately
+- Built in Rust — starts in milliseconds, never crashes
 
-| Feature | notecli | jrnl | nb | todo.txt |
-|---|---|---|---|---|
-| Works without Python or Ruby | YES | NO | NO | YES |
-| Single file no installation | YES | NO | NO | NO |
-| Simple under 10 commands | YES | YES | NO | YES |
-| Full title and body per note | YES | YES | YES | NO |
-| Tag support | YES | YES | YES | YES |
-| Full-text search | YES | YES | YES | NO |
-| Built in Rust instant startup | YES | NO | NO | NO |
-| Plain JSON scriptable storage | YES | NO | NO | NO |
-| Notes feel like code | YES | NO | NO | NO |
+This combination does not exist in any other tool.
 
-vs jrnl
-jrnl requires Python and pip to install. notecli is one
-single binary. No Python, no pip, no virtual environments.
+---
 
-vs nb
-nb has over 100 subcommands and requires bash, git and curl.
-notecli has 6 commands and nothing else to install.
+## Broad Comparison — Where notecli Fits
 
-vs todo.txt
-todo.txt only supports one line per entry built for tasks.
-notecli supports a full title, body and tags — better for
-lecture notes and study summaries.
+CLOUD NOTE APPS:
+Notion — powerful but needs account, browser and internet
+Evernote — needs account and subscription for full features
+Google Keep — simple but tied to Google account
+Microsoft OneNote — free but needs Microsoft account
+Simplenote — minimal but requires account and internet
 
-vs Onyx
-Onyx is a beautiful macOS app focused on typographic
-brilliance — notes displayed like a typeset book.
-notecli has the opposite focus: speed and structure
-over beauty. For the developer who wants to capture
-a thought in 2 seconds without leaving the terminal.
+DESKTOP NOTE APPS:
+Obsidian — excellent but needs app installation and GUI
+Onyx — beautiful typography but macOS only, needs app
+Standard Notes — encrypted but needs account and app
+Capacities — modern but cloud based and needs account
 
-## What Makes notecli Special for Users
+CLI NOTE TOOLS:
+jrnl — needs Python and pip installed
+nb — needs bash, git, curl — over 100 commands, complex
+Joplin CLI — needs Node.js installed, complex setup
+tnote — needs Python installed
+tdo — opinionated, needs Go installed
+todo.txt — no body field, tasks only, no structure
+idea — lightweight but no tag system or search
 
-No setup needed — what this means for you:
-Download one file and it works immediately. No admin rights
-needed. Works on any university computer. Less time setting
-up means more time taking notes.
+TUI NOTE TOOLS:
+clin — text interface inside terminal, needs installation
+VB Notes — local search but GUI based
 
-Plain JSON storage — what this means for you:
-Your notes are saved in a file you can open in any text
-editor. Never locked into notecli. Copy to USB, back up
-with git or import into any other tool. Your notes
-belong to you forever.
+notecli compared to all of them:
 
-Works offline — what this means for you:
-Use notecli on a plane, in a basement, in a hospital lab
-with no wifi. Notes always available because they live
-on your computer not on a server.
+| Feature | notecli | jrnl | nb | Obsidian | Notion |
+|---|---|---|---|---|---|
+| Works in terminal | YES | YES | YES | NO | NO |
+| Zero dependencies | YES | NO | NO | NO | NO |
+| Single binary | YES | NO | NO | NO | NO |
+| No account needed | YES | YES | YES | YES | NO |
+| Works offline | YES | YES | YES | YES | NO |
+| Structured notes | YES | Partial | YES | YES | YES |
+| Instant setup | YES | NO | NO | NO | NO |
+| Built in Rust | YES | NO | NO | NO | NO |
+| Free forever | YES | YES | YES | NO | NO |
 
-## Answering the Professor Questions Directly
+The gap notecli fills:
+Every tool that is structured needs setup or an account.
+Every tool with zero setup has no structure.
+notecli is the only one with BOTH.
 
-Why are single binary and plain JSON valid for users?
-Single binary means a student on a university computer
-with no admin rights can still use notecli.
-Plain JSON means your notes belong to you forever.
-If notecli disappears your notes are still readable
-by any tool. You are never locked in.
+---
 
-What is the difference between works offline and no internet?
-There is no difference — we listed it twice by mistake.
-The correct statement is simply: works offline.
+## What Category Does notecli Belong To?
 
-Is pipeable just a subfeature of CLI?
-Yes — you are right. We removed it as a standalone feature.
-It is simply what every good CLI tool does by default.
+notecli belongs to the TEXT EDITING category.
+
+It provides a completely new interaction model for
+creating and editing text. Instead of opening an app,
+clicking buttons and navigating menus, you edit text
+through simple structured commands directly in your
+terminal. The focus is on making text capture and
+retrieval faster and more efficient than any existing
+approach.
+
+---
+
+## What Makes notecli Different From Each Competitor
+
+vs Notion and Evernote:
+No account. No internet. No browser. Works offline.
+One command versus 5 clicks.
+
+vs Obsidian:
+No app to install. No graphical interface needed.
+Works on any Linux system with no setup at all.
+
+vs Onyx:
+Onyx focuses on typographic beauty — displaying notes
+like a typeset book on macOS. notecli focuses on the
+opposite: speed of capture on any Linux terminal.
+Different tools for completely different workflows.
+
+vs jrnl:
+jrnl requires Python and pip. notecli needs nothing.
+Download one file and it works. No runtime needed.
+
+vs nb:
+nb has over 100 commands and requires bash, git and
+curl configured. notecli has 6 commands. That is all.
+
+vs Joplin CLI:
+Joplin CLI needs Node.js installed and a sync account
+for full features. notecli works standalone with zero
+dependencies and no account ever.
+
+vs todo.txt:
+todo.txt supports only one line per entry — built for
+tasks not notes. notecli has title, body and tags —
+built for real notes and study summaries.
+
+vs a plain text file:
+A text file has no structure. Finding something later
+means reading everything. notecli gives you instant
+search by keyword or tag across all your notes.
+
+---
+
+## What "Structured Notes" Actually Means
+
+Every note in notecli has three fields:
+- Title — a short name for the note
+- Body — the full content
+- Tags — labels to organise by topic or priority
+
+This is not an AST or programming language concept.
+It simply means every note is organised the same way
+so you can always find it later instantly.
+
+A plain text file is searchable with grep but has no
+structure. notecli gives you structure with the same
+simplicity as a text file.
+
+---
 
 ## Static Linking Verified
 
-Download and verify yourself:
+Verify the binary yourself:
+
 wget https://github.com/addoransford020-cmd/notecli/releases/download/v0.3.0/aarch64-unknown-linux-musl.tar.gz
 tar -xzvf aarch64-unknown-linux-musl.tar.gz
 file notecli
 
-Expected output:
+Output confirms:
 notecli: ELF 64-bit LSB executable, ARM aarch64, statically linked
+
+---
 
 ## How to Install
 
@@ -139,28 +193,30 @@ notecli view 0
 notecli edit 0 --title "Updated title"
 notecli delete 0
 
+---
+
 ## Customer Acquisition Strategy
 
 Who are our target users:
 - Students who work in the terminal every day
-- Linux developers who want notes inside their workflow
-- Privacy focused users who do not want cloud note apps
+- Linux and backend developers
+- Privacy focused users avoiding cloud note apps
+- Developers on shared university computers with no admin rights
 
 How we find and attract them:
 
 1. GitHub organic discovery
 People searching for CLI note tools on GitHub find us.
-Clear README and documentation brings users in naturally.
+Good README and documentation brings users in naturally.
 Open source means developers trust and share it freely.
 
 2. GitHub Pages website
-Simple landing page explains the tool with live examples.
-Download instructions make it easy to get started.
+Simple landing page with clear examples and download links.
+Shows exactly what problem notecli solves and who it is for.
 
 3. Dev.to blog post
-Write about building notecli as a student using Rust.
-Explain the problem it solves and link to the GitHub repo.
-Developer blog posts drive consistent organic traffic.
+Explain the problem notecli solves as a student using Rust.
+Link back to GitHub repo to drive consistent organic traffic.
 
 4. Developer communities
 Share in Discord servers for Linux and Rust developers.
@@ -175,31 +231,30 @@ Free tier builds trust — users love the tool first.
 When they get a second device they want sync.
 Pro tier at 4 euros per month solves exactly that.
 
+---
+
 ## Pricing Strategy
 
 Free tier — forever:
-All 6 commands, unlimited notes, all platforms.
-No credit card, no account, no time limit.
+All commands, unlimited notes, all platforms.
+No credit card. No account. No time limit.
 Goal: build a large base of happy users who trust the tool.
 
 Pro tier — 4 euros per month:
 Adds encrypted sync across devices using a private key.
-No account needed — pay once, receive a sync key.
-Goal: convert power users who work on multiple devices.
-
-How the sync key works:
-- Pay via a simple payment link — no account created
-- You receive a unique private sync key
-- Run notecli sync --key YOUR_KEY on each device
-- Notes are encrypted on your device before uploading
-- We never see your notes — only the encrypted file
-- No email, no password — just your key
+No account needed — pay once and receive a sync key.
+Run notecli sync --key YOUR_KEY on each device.
+Notes are encrypted on your device before uploading.
+We never see your notes — only the encrypted file.
+Goal: convert power users working on multiple devices.
 
 Why 4 euros:
 - Affordable for students
 - Covers sync server running costs
 - Cheaper than Notion Pro at 8 euros per month
 - No annual commitment — cancel any time
+
+---
 
 ## License
 MIT — free to use for anything
